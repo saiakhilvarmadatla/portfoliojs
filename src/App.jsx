@@ -17,7 +17,7 @@ import { Row, Col } from 'react-bootstrap';
 
 import { 
   OrbitControls, MeshWobbleMaterial, Decal,
-  MeshDistortMaterial, useGLTF, Center,
+  MeshDistortMaterial, useGLTF, Center, Environment,
 } from '@react-three/drei';
 
 import "primereact/resources/themes/lara-light-indigo/theme.css";
@@ -172,7 +172,7 @@ function App() {
 
   return (
     <React.Fragment>
-      <ScrollPanel style={{position: 'absolute', zIndex: '500', color: '#fff', width: '100vw', height: '90vh', padding: '5px'}}>
+      <ScrollPanel style={{position: 'absolute', zIndex: '500', color: '#fff', width: '100vw', height: '98vh'}}>
         <header style={{height: '5vh', padding: '2px', paddingTop: '4px'}}>
           <div style={{display: 'flex', position: 'fixed'}}>
             <div>
@@ -200,7 +200,7 @@ function App() {
           </div>
         </header>
 
-        <div style={theme===false ? {marginLeft: '2.5vw', marginTop: '5vh', color: 'black'} : {marginLeft: '2.5vw', marginTop: '5vh', color: 'silver'}}>
+        <div style={theme===false ? {marginLeft: '2.5vw', marginTop: '5vh', color: 'black'} : {marginLeft: '2.5vw', marginTop: '5vh', color: 'ghostwhite'}}>
           <div style={{fontSize: '40px', fontWeight: '400'}}>Hi There,</div>
 
           <div style={{fontSize: '27px', fontWeight: '600', marginTop: '4.5px', display: 'flex'}}>
@@ -210,82 +210,64 @@ function App() {
           </div>
 
           <l>
-            <li style={{fontSize: '18px', fontWeight: '600', marginTop: '10px'}} className='typing'>            
+            <li style={{fontSize: '18px', fontWeight: '600', marginTop: '10px', width: 'max-content'}} className='typing'>            
               I'm a React developer with a passion for creating responsive and user-friendly web applications. 
             </li>
 
-            <li style={{fontSize: '18px', fontWeight: '600', marginTop: '10px'}} className='typing'>
+            <li style={{fontSize: '18px', fontWeight: '600', marginTop: '10px', width: 'max-content'}} className='typing'>
               I'm also a AR/VR Enthusiast. Learning Three Js, Python & Node Js.
             </li>
 
-            <li style={{fontSize: '18px', fontWeight: '600', marginTop: '10px'}} className='typing'>
+            <li style={{fontSize: '18px', fontWeight: '600', marginTop: '10px', width: 'max-content'}} className='typing'>
               Two steps away from becoming Full-Stack Developer.
             </li>
           </l>
+
+          <div className='link1' style={{marginTop: '2vh'}}>
+            <a href='https://github.com/sai2702/' target='_blank'>
+              <img src={theme===false ? '/github_dark.svg' : '/github_light.svg'} style={{
+                width: '45px', height: '45px'
+              }} />
+            </a>
+
+            <a href='https://www.linkedin.com/in/sai-akhil-varma-datla-051b3b158/' target='_blank'>
+              <img src={theme===false ? '/linkedin_dark.svg' : '/linkedin_light.svg'} style={{
+                width: '45px', height: '45px'
+              }} />
+            </a>
+
+            <a href='https://www.instagram.com/kr.ishna1277/' target='_blank'>
+              <img src={theme===false ? '/instagram_dark.svg' : '/instagram_light.svg'} style={{
+                width: '45px', height: '45px'
+              }} />
+            </a>
+            
+            {/* <a href='' target='_blank'>
+              <img src={'/envelope.svg'} style={{
+                width: '45px', height: '45px', color: 'white'
+              }} />
+            </a> */}
+          </div>
         </div>
 
-        <div style={theme===false ? {marginLeft: '2.5vw', marginTop: '5vh', color: 'black'} : {marginLeft: '2.5vw', marginTop: '5vh', color: 'silver'}}>
-          <h3 style={{textDecorationLine: 'underline'}}>Projects</h3>
-        </div>
-        
-        <div style={theme===false ? {marginLeft: '2.5vw', marginTop: '5vh', color: 'black'} : {marginLeft: '2.5vw', marginTop: '5vh', color: 'silver'}}>
+        <div style={theme===false ? {marginLeft: '2.5vw', marginTop: '5vh', color: 'black'} : {marginLeft: '2.5vw', marginTop: '5vh', color: 'ghostwhite'}}>
           <h3 style={{textDecorationLine: 'underline'}}>Skills</h3>
 
           <Row>
             <Col xs={3}>
-              <Canvas>
-                <ambientLight intensity={0.5} />
-
-                <OrbitControls />
-
-                <mesh scale={1.75}>
-                  <circleGeometry />
-                  <MeshDistortMaterial side={THREE.DoubleSide} />
-                  <Decal polygonOffsetFactor={-0} position={[0, 0, 0]} scale={1.35} map={ReactMap} />
-                </mesh>
-              </Canvas>
+              <img src={'/react.png'} style={{width: 150, height: 'auto'}} />
             </Col>
 
             <Col xs={3}>
-              <Canvas>
-                <ambientLight intensity={0.5} />
-
-                <OrbitControls />
-
-                <mesh scale={1.75}>
-                  <circleGeometry />
-                  <MeshDistortMaterial side={THREE.DoubleSide} />
-                  <Decal polygonOffsetFactor={-0} position={[0, 0, 0]} scale={1.35} map={ThreeMap} />
-                </mesh>
-              </Canvas>
+              <img src={'/three.png'} style={{width: 150, height: 'auto'}} />
             </Col>
 
             <Col xs={3}>
-              <Canvas>
-                <ambientLight intensity={0.5} />
-
-                <OrbitControls />
-
-                <mesh scale={1.75}>
-                  <circleGeometry />
-                  <MeshDistortMaterial side={THREE.DoubleSide} />
-                  <Decal polygonOffsetFactor={-0} position={[0, 0, 0]} scale={1.35} map={FirebaseMap} />
-                </mesh>
-              </Canvas>
+              <img src={'/firebase.png'} style={{width: 150, height: 'auto'}} />
             </Col>
 
             <Col xs={3}>
-              <Canvas>
-                <ambientLight intensity={0.5} />
-
-                <OrbitControls />
-
-                <mesh scale={1.75}>
-                  <circleGeometry />
-                  <MeshDistortMaterial side={THREE.DoubleSide} />
-                  <Decal polygonOffsetFactor={-0} position={[0, 0, 0]} scale={1.35} map={WebXRMap} />
-                </mesh>
-              </Canvas>
+              <img src={'/webxr.png'} style={{width: 150, height: 'auto'}} />              
             </Col>
           </Row>
         </div>
@@ -328,6 +310,8 @@ function App() {
             />
           </mesh>
         </Center>
+
+        <Environment preset={theme===false ? 'dawn' : 'night'} />
 
         <OrbitControls />
       </Canvas>

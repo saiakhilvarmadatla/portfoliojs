@@ -297,5 +297,26 @@
   top: 0;
   border-radius: 100%;
 }
+
+.link1 {
+  line-height: 40px;
+  background: rgba(0, 0, 0, 0.3);
+  width: max-content;
+  display: block;
+  display: flex;
+  z-index: 2;
+  gap: 0.8rem;
+  border-radius: 3rem;
+}
+
+.link1 a {
+  background: transparent;
+  padding: 0.9rem;
+  border-radius: 50%;
+  display: flex;
+  color: var(--color-light);
+  font-size: 2rem;
+}
+
 /* Parent background */
 /* #F5F5FA */
