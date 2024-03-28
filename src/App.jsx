@@ -11,7 +11,7 @@ import {
   // useFrame, extend, 
 } from '@react-three/fiber';
 
-import { ScrollPanel } from 'primereact/scrollpanel';
+// import { ScrollPanel } from 'primereact/scrollpanel';
 
 import { Row, Col } from 'react-bootstrap';
 
@@ -50,7 +50,7 @@ function App() {
   const [theme, setTheme] = useState(true);
   const [hColor, setHClr] = useState('transparent');
 
-  const handleScroll = (e) => {
+  const handleScroll = () => {
     if (window.scrollY > 5) {
       if(theme===true){ 
         setHClr("#242424");
@@ -153,6 +153,7 @@ function App() {
 
   useEffect(() => {
     document.title = 'Home Page S.A.V.D';
+    console.log(window.scroll)
   }, []);
 
   useEffect(() => {

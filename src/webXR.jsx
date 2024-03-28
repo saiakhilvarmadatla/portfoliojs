@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { Entity, Scene } from 'aframe-react';
+import 'aframe';
 
+import { Entity, Scene } from 'aframe-react';
 
 export const WebXR = () => {
     return (
