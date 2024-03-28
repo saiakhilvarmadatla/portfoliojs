@@ -6,7 +6,7 @@ import * as THREE from 'three';
 // import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 
 import { 
-  Canvas, useLoader, 
+  Canvas, 
   // useLoader,
   // useFrame, extend, 
 } from '@react-three/fiber';
@@ -16,9 +16,12 @@ import { ScrollPanel } from 'primereact/scrollpanel';
 import { Row, Col } from 'react-bootstrap';
 
 import { 
-  OrbitControls, MeshWobbleMaterial, Decal,
-  MeshDistortMaterial, useGLTF, Center, Environment,
+  OrbitControls, MeshWobbleMaterial, 
+  // Decal, useGLTF,
+  MeshDistortMaterial, Center, Environment,
 } from '@react-three/drei';
+
+import WebXR from './webXR';
 
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";                
@@ -45,6 +48,19 @@ import './App.css';
 
 function App() {
   const [theme, setTheme] = useState(true);
+  const [hColor, setHClr] = useState('transparent');
+
+  const handleScroll = (e) => {
+    if (window.scrollY > 5) {
+      if(theme===true){ 
+        setHClr("#242424");
+      } else { 
+        setHClr('lightskyblue');
+      }
+    } else {
+      setHClr('transparent');
+    }
+  };
 
   // extend({ TextGeometry });
 
@@ -136,7 +152,11 @@ function App() {
   // };
 
   useEffect(() => {
-    document.title = 'Home Page- S.A.V.D';
+    document.title = 'Home Page S.A.V.D';
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
   }, []);
 
   // const items = [
@@ -162,18 +182,18 @@ function App() {
   //   );
   // };
 
-  const ReactMap = useLoader(THREE.TextureLoader, 'react.png');
+  // const ReactMap = useLoader(THREE.TextureLoader, 'react.png');
 
-  const ThreeMap = useLoader(THREE.TextureLoader, 'three.png');
+  // const ThreeMap = useLoader(THREE.TextureLoader, 'three.png');
 
-  const FirebaseMap = useLoader(THREE.TextureLoader, 'firebase.png');
+  // const FirebaseMap = useLoader(THREE.TextureLoader, 'firebase.png');
 
-  const WebXRMap = useLoader(THREE.TextureLoader, 'webxr.png');
+  // const WebXRMap = useLoader(THREE.TextureLoader, 'webxr.png');
 
   return (
     <React.Fragment>
-      <ScrollPanel style={{position: 'absolute', zIndex: '500', color: '#fff', width: '100vw', height: '98vh'}}>
-        <header style={{height: '5vh', padding: '2px', paddingTop: '4px'}}>
+      <div style={{position: 'absolute', zIndex: '500', color: '#fff', width: '100vw', height: '100vh', overflowY: 'scroll'}} >
+        <header className='header' style={{ backgroundColor: hColor }}>
           <div style={{display: 'flex', position: 'fixed'}}>
             <div>
               {/* <img /> */}
@@ -200,7 +220,7 @@ function App() {
           </div>
         </header>
 
-        <div style={theme===false ? {marginLeft: '2.5vw', marginTop: '5vh', color: 'black'} : {marginLeft: '2.5vw', marginTop: '5vh', color: 'ghostwhite'}}>
+        <div style={theme===false ? {marginLeft: '1.5vw', marginTop: '5vh', color: 'black'} : {marginLeft: '1.5vw', marginTop: '5vh', color: 'ghostwhite'}}>
           <div style={{fontSize: '40px', fontWeight: '400'}}>Hi There,</div>
 
           <div style={{fontSize: '27px', fontWeight: '600', marginTop: '4.5px', display: 'flex'}}>
@@ -254,24 +274,30 @@ function App() {
           <h3 style={{textDecorationLine: 'underline'}}>Skills</h3>
 
           <Row>
-            <Col xs={3}>
-              <img src={'/react.png'} style={{width: 150, height: 'auto'}} />
+            <Col xs={3} sm={2}>
+              <img src={'/react.png'} style={{width: 100, height: 'auto'}} />
             </Col>
 
-            <Col xs={3}>
-              <img src={'/three.png'} style={{width: 150, height: 'auto'}} />
+            <Col xs={3} sm={2}>
+              <img src={'/react.png'} style={{width: 100, height: 'auto'}} />
             </Col>
 
-            <Col xs={3}>
-              <img src={'/firebase.png'} style={{width: 150, height: 'auto'}} />
+            <Col xs={3} sm={2}>
+              <img src={'/three.png'} style={{width: 100, height: 'auto'}} />
             </Col>
 
-            <Col xs={3}>
-              <img src={'/webxr.png'} style={{width: 150, height: 'auto'}} />              
+            <Col xs={3} sm={2}>
+              <img src={'/firebase.png'} style={{width: 100, height: 'auto'}} />
+            </Col>
+
+            <Col xs={3} sm={2}>
+              <img src={'/webxr.png'} style={{width: 100, height: 'auto'}} />              
             </Col>
           </Row>
         </div>
-      </ScrollPanel>
+
+        <WebXR />
+      </div>
 
       <Canvas 
         style={
