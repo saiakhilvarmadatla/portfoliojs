@@ -192,7 +192,7 @@ function App() {
 
   return (
     <React.Fragment>
-      <div style={{position: 'absolute', zIndex: '500', color: '#fff', width: '100vw', height: '100vh', overflowY: 'scroll'}} >
+      <div style={{position: 'absolute', zIndex: '500', color: '#fff', width: '100vw', height: '100vh', overflowY: 'scroll', overflowX: 'hidden'}} >
         <header className='header' style={{ backgroundColor: hColor }}>
           <div style={{display: 'flex', position: 'fixed'}}>
             <div>
