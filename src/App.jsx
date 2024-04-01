@@ -50,17 +50,23 @@ function App() {
   const [theme, setTheme] = useState(true);
   const [hColor, setHClr] = useState('transparent');
 
-  const handleScroll = () => {
-    if (window.scrollY > 5) {
-      if(theme===true){ 
-        setHClr("#242424");
-      } else { 
-        setHClr('lightskyblue');
-      }
-    } else {
-      setHClr('transparent');
-    }
-  };
+  const textArr = [
+    "I'm a React developer.", 
+    "I'm also a AR/VR Enthusiast.", 
+    "Learning Three Js, Python & Node Js.",
+  ];
+
+  // const handleScroll = () => {
+  //   if (window.scrollY > 5) {
+  //     if(theme===true){ 
+  //       setHClr("#242424");
+  //     } else { 
+  //       setHClr('lightskyblue');
+  //     }
+  //   } else {
+  //     setHClr('transparent');
+  //   }
+  // };
 
   // extend({ TextGeometry });
 
@@ -153,12 +159,31 @@ function App() {
 
   useEffect(() => {
     document.title = 'Home Page S.A.V.D';
-    console.log(window.scroll)
   }, []);
 
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll);
+  // }, []);
+
+  const [text, setText] = useState(0);
+
+  function setRandomName() {
+    const index = Math.floor(Math.random() * textArr.length);
+
+    let newText = textArr[index];
+
+    if (newText == text) { 
+      setRandomName() 
+    } else { 
+      setText(newText) 
+    }
+
+    return
+  };
+
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-  }, []);
+    setTimeout(() => { setRandomName() }, 5000);
+  }, [text]);
 
   // const items = [
   //   { status: 'Ordered', date: '15/10/2020 10:30', icon: 'pi pi-shopping-cart', color: '#9C27B0' },
@@ -229,20 +254,12 @@ function App() {
             {/* <div style={{marginLeft: '5px', marginTop: '-5px'}} className='yin-yang'></div> */}
             <div style={{marginLeft: '5px', marginTop: '15px'}} className='infinity'></div>
           </div>
+          
+          <h3>🗾🥂</h3>
 
-          <l>
-            <li style={{fontSize: '18px', fontWeight: '600', marginTop: '10px', width: 'max-content'}} className='typing'>            
-              I'm a React developer with a passion for creating responsive and user-friendly web applications. 
-            </li>
-
-            <li style={{fontSize: '18px', fontWeight: '600', marginTop: '10px', width: 'max-content'}} className='typing'>
-              I'm also a AR/VR Enthusiast. Learning Three Js, Python & Node Js.
-            </li>
-
-            <li style={{fontSize: '18px', fontWeight: '600', marginTop: '10px', width: 'max-content'}} className='typing'>
-              Two steps away from becoming Full-Stack Developer.
-            </li>
-          </l>
+          <div style={{fontSize: '28px', fontWeight: '700', marginTop: '10px', width: 'max-content', color: 'tomato'}} className='typing'>            
+            {text}
+          </div>
 
           <div className='link1' style={{marginTop: '2vh'}}>
             <a href='https://github.com/sai2702/' target='_blank'>
