@@ -48,12 +48,11 @@ import './App.css';
 
 function App() {
   const [theme, setTheme] = useState(true);
-  const [hColor, setHClr] = useState('transparent');
 
   const textArr = [
-    "I'm a React developer.", 
-    "I'm also a AR/VR Enthusiast.", 
-    "Learning Three Js, Python & Node Js.",
+    "I'm a React developer ☝", 
+    "I'm a Tech Enthusiast ♣", 
+    "Learning Three Js, AR/VR & Node Js ✍",
   ];
 
   // const handleScroll = () => {
@@ -216,14 +215,16 @@ function App() {
 
   // const WebXRMap = useLoader(THREE.TextureLoader, 'webxr.png');
 
+  // https://codesandbox.io/p/sandbox/on-scroll-change-sticky-menu-size-and-background-color-sjsi1?file=%2Fsrc%2FApp.js
+
   return (
     <React.Fragment>
       <div style={{position: 'absolute', zIndex: '500', color: '#fff', width: '100vw', height: '100vh', overflowY: 'scroll', overflowX: 'hidden'}} >
-        <header className='header' style={{ backgroundColor: hColor }}>
+        <header className='header' style={theme===true ? { backgroundColor: '#242424' } : { backgroundColor: '#b0c4de' }}>
           <div style={{display: 'flex', position: 'fixed'}}>
             <div>
               {/* <img /> */}
-              <h2 style={{marginLeft: '2.5vw', color: 'tomato', fontWeight: 'bold', textDecorationLine: 'underline'}}>S.A.V.D</h2>
+              <h2 style={{marginLeft: '2.5vw', color: 'tomato', fontWeight: 'bold', textDecorationLine: 'underline'}}>S.A.V.D <span>♠</span></h2>
             </div>
 
             <div style={{position: 'fixed', right: '18vw'}}> 
@@ -252,12 +253,12 @@ function App() {
           <div style={{fontSize: '27px', fontWeight: '600', marginTop: '4.5px', display: 'flex'}}>
             <span style={{fontStyle: 'italic', fontFamily: 'cursive'}}>Sai Akhil Varma Datla</span>. 
             {/* <div style={{marginLeft: '5px', marginTop: '-5px'}} className='yin-yang'></div> */}
-            <div style={{marginLeft: '5px', marginTop: '15px'}} className='infinity'></div>
+            <div style={{marginLeft: '5px', marginTop: '15px'}} className='infinity'></div><span>&nbsp;🥂✌</span>
           </div>
           
-          <h3>🗾🥂</h3>
+          {/* <h3></h3> */}
 
-          <div style={{fontSize: '28px', fontWeight: '700', marginTop: '10px', width: 'max-content', color: 'tomato'}} className='typing'>            
+          <div style={theme===false ? {fontSize: '25px', fontWeight: '600', marginTop: '10px', width: 'max-content', color: 'seagreen'} : {fontSize: '25px', fontWeight: '600', marginTop: '10px', width: 'max-content', color: 'aquamarine'}} className='typing'>            
             {text}
           </div>
 
@@ -314,7 +315,7 @@ function App() {
           </Row>
         </div>
 
-        <WebXR />
+        <WebXR xr={'ar'} />
       </div>
 
       <Canvas 
@@ -330,7 +331,7 @@ function App() {
         <ambientLight intensity={0.15} />
 
         <Center>
-          <mesh scale={0.5} position={[0, 1.5, 0]}>
+          <mesh scale={0.5} position={[0, 1.25, 0]}>
             <octahedronGeometry />
             <MeshWobbleMaterial
               side={THREE.DoubleSide}
@@ -338,7 +339,7 @@ function App() {
             />
           </mesh>
 
-          <mesh scale={0.5} position={[0, -0.35, 0]} rotation={[0, 0, -90]}>
+          <mesh scale={0.5} position={[0, -0.5, 0]} rotation={[0, 0, -90]}>
             <torusKnotGeometry />
             <MeshWobbleMaterial
               side={THREE.DoubleSide}
