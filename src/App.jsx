@@ -48,24 +48,25 @@ import './App.css';
 
 function App() {
   const [theme, setTheme] = useState(true);
+  const [hclr, setHClr] = useState('transparent');
 
   const textArr = [
     "I'm a React developer ☝", 
     "I'm a Tech Enthusiast ♣", 
-    "Learning Three Js, AR/VR & Node Js ✍",
+    "Learning ThreeJS, AR/VR & NodeJS ✍",
   ];
 
-  // const handleScroll = () => {
-  //   if (window.scrollY > 5) {
-  //     if(theme===true){ 
-  //       setHClr("#242424");
-  //     } else { 
-  //       setHClr('lightskyblue');
-  //     }
-  //   } else {
-  //     setHClr('transparent');
-  //   }
-  // };
+  const handleScroll = () => {
+    if (window.scrollY > 5) {
+      if(theme===true){ 
+        setHClr("#242424");
+      } else { 
+        setHClr('lightskyblue');
+      }
+    } else {
+      setHClr('transparent');
+    }
+  };
 
   // extend({ TextGeometry });
 
@@ -158,6 +159,8 @@ function App() {
 
   useEffect(() => {
     document.title = 'Home Page S.A.V.D';
+
+    window.addEventListener("scroll", handleScroll);
   }, []);
 
   // useEffect(() => {
@@ -218,47 +221,45 @@ function App() {
   // https://codesandbox.io/p/sandbox/on-scroll-change-sticky-menu-size-and-background-color-sjsi1?file=%2Fsrc%2FApp.js
 
   return (
-    <React.Fragment>
-      <div style={{position: 'absolute', zIndex: '500', color: '#fff', width: '100vw', height: '100vh', overflowY: 'scroll', overflowX: 'hidden'}} >
-        <header className='header' style={theme===true ? { backgroundColor: '#242424' } : { backgroundColor: '#b0c4de' }}>
-          <div style={{display: 'flex', position: 'fixed'}}>
-            <div>
-              {/* <img /> */}
-              <h2 style={{marginLeft: '2.5vw', color: 'tomato', fontWeight: 'bold', textDecorationLine: 'underline'}}>S.A.V.D <span>♠</span></h2>
-            </div>
+    <div>
+      <header className='header' style={{ backgroundColor: hclr }}>
+        <div style={{display: 'flex', position: 'fixed'}}>
+          <div>
+            {/* <img /> */}
+            <h2 style={{marginLeft: '2.5vw', color: 'tomato', fontWeight: 'bold', textDecorationLine: 'underline'}}>S.A.V.D <span>♠</span></h2>
+          </div>
 
-            <div style={{position: 'fixed', right: '18vw'}}> 
-              {/* {theme===true? <img src={'/sunlogo.png'} style={{width: '25px', height: 'auto'}} /> : <img src={'/moonlogo.png'} style={{width: '25px', height: 'auto'}} />} */}
-              
-              <div className="checkbox-wrapper-54">
-                <label className="switch">
-                  <input 
-                    type="checkbox" checked={theme} 
-                    onChange={(e) => setTheme(e.target.checked)} 
-                  />
-                  <span className="slider" />
-                </label>
-              </div>
-            </div>
-
-            <div style={{position: 'fixed', right: '2.5vw'}} className='btn_user'>
-              <div className="pi pi-user" style={{fontSize: '20px'}}></div>
+          <div style={{position: 'fixed', right: '18vw'}}> 
+            {/* {theme===true? <img src={'/sunlogo.png'} style={{width: '25px', height: 'auto'}} /> : <img src={'/moonlogo.png'} style={{width: '25px', height: 'auto'}} />} */}
+            
+            <div className="checkbox-wrapper-54">
+              <label className="switch">
+                <input 
+                  type="checkbox" checked={theme} 
+                  onChange={(e) => setTheme(e.target.checked)} 
+                />
+                <span className="slider" />
+              </label>
             </div>
           </div>
-        </header>
 
+          <div style={{position: 'fixed', right: '2.5vw'}} className='btn_user'>
+            <div className="pi pi-user" style={{fontSize: '20px', color: '#fff'}}></div>
+          </div>
+        </div>
+      </header>
+
+      <div style={{position: 'absolute', zIndex: '500', color: '#fff', width: '100%', height: '100vh', overflow: 'hidden'}} >
         <div style={theme===false ? {marginLeft: '1.5vw', marginTop: '5vh', color: 'black'} : {marginLeft: '1.5vw', marginTop: '5vh', color: 'ghostwhite'}}>
-          <div style={{fontSize: '40px', fontWeight: '400'}}>Hi There,</div>
+          <div style={{fontSize: '35px', fontWeight: '400'}}>Hi There,</div>
 
-          <div style={{fontSize: '27px', fontWeight: '600', marginTop: '4.5px', display: 'flex'}}>
+          <div style={{fontSize: '25px', fontWeight: '600', marginTop: '4.5px', display: 'flex'}}>
             <span style={{fontStyle: 'italic', fontFamily: 'cursive'}}>Sai Akhil Varma Datla</span>. 
             {/* <div style={{marginLeft: '5px', marginTop: '-5px'}} className='yin-yang'></div> */}
-            <div style={{marginLeft: '5px', marginTop: '15px'}} className='infinity'></div><span>&nbsp;🥂✌</span>
+            <div style={{marginLeft: '5px', marginTop: '15px'}} className='infinity'></div><span>&nbsp;✌</span>
           </div>
-          
-          {/* <h3></h3> */}
 
-          <div style={theme===false ? {fontSize: '25px', fontWeight: '600', marginTop: '10px', width: 'max-content', color: 'seagreen'} : {fontSize: '25px', fontWeight: '600', marginTop: '10px', width: 'max-content', color: 'aquamarine'}} className='typing'>            
+          <div style={theme===false ? {fontSize: '22px', fontWeight: '600', marginTop: '10px', width: 'max-content', color: 'seagreen'} : {fontSize: '22px', fontWeight: '600', marginTop: '10px', width: 'max-content', color: 'aquamarine'}} className='typing'>            
             {text}
           </div>
 
@@ -294,37 +295,55 @@ function App() {
 
           <Row>
             <Col xs={3} sm={2}>
-              <img src={'/react.png'} style={{width: 100, height: 'auto'}} />
+              <img src={'/react.png'} style={{width: 90, height: 90}} />
+              <div style={{marginTop: '2.5px'}}>
+                <b>&nbsp;&nbsp;&nbsp;React JS</b>
+              </div>            
             </Col>
 
             <Col xs={3} sm={2}>
-              <img src={'/react.png'} style={{width: 100, height: 'auto'}} />
+              <img src={'/react.png'} style={{width: 90, height: 90}} />
+              <div style={{marginTop: '2.5px'}}>
+                <b>&nbsp;React Native</b>
+              </div>            
             </Col>
 
             <Col xs={3} sm={2}>
-              <img src={'/three.png'} style={{width: 100, height: 'auto'}} />
+              <img src={'/three.png'} style={{width: 90, height: 90}} />
+              <div style={{marginTop: '2.5px'}}>
+                <b>&nbsp;&nbsp;Three JS</b>
+              </div>            
             </Col>
 
             <Col xs={3} sm={2}>
-              <img src={'/firebase.png'} style={{width: 100, height: 'auto'}} />
+              <img src={'/firebase.png'} style={{width: 90, height: 90}} />
+              <div style={{marginTop: '2.5px'}}>
+                <b>&nbsp;&nbsp;&nbsp;Firebase</b>
+              </div>            
             </Col>
 
             <Col xs={3} sm={2}>
-              <img src={'/webxr.png'} style={{width: 100, height: 'auto'}} />              
+              <img src={'/metamask2.png'} style={{width: 90, height: 90}} />
+              <div style={{marginTop: '2.5px'}}>
+                <b>&nbsp;&nbsp;&nbsp;Web 3.0</b>
+              </div>            
+            </Col>
+
+            <Col xs={3} sm={2}>
+              <img src={'/webxr.png'} style={{width: 90, height: 90}} />  
+              <div style={{marginTop: '2.5px'}}>
+                <b>&nbsp;&nbsp;&nbsp;Web XR</b>
+              </div>            
             </Col>
           </Row>
         </div>
-
-        <WebXR xr={'ar'} />
       </div>
-
+      
       <Canvas 
-        style={
-          theme===false 
-          ? {height: '100vh', width: '100vw', backgroundColor: '#b0c4de'} 
-          : {height: '100vh', width: '100vw', backgroundColor: '#242424'}
-        } 
-        shadows dpr={[1, 2]} camera={{fov: 50, near: 1, far: 20}}
+        style={theme===false ? 
+          {height: '110vh', width: '100%', backgroundColor: '#b0c4de', marginTop: '-9%'} :
+          {height: '110vh', width: '100%', backgroundColor: '#242424', marginTop: '-9%'}
+        } shadows dpr={[1, 2]} camera={{fov: 50, near: 1, far: 20}}
       >
         <hemisphereLight args={theme===false ? ['lightskyblue', 'dodgerblue'] : ['white', 'dimgray']} intensity={1.5} />
 
@@ -360,7 +379,9 @@ function App() {
 
         <OrbitControls />
       </Canvas>
-    </React.Fragment>
+
+      <WebXR xr={'ar'} theme={theme} />
+    </div>
   );
 };
 
