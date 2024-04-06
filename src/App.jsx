@@ -22,6 +22,7 @@ import {
 } from '@react-three/drei';
 
 import WebXR from './webXR';
+import Games from './games/index.jsx';
 
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";                
@@ -61,7 +62,7 @@ function App() {
       if(theme===true){ 
         setHClr("#242424");
       } else { 
-        setHClr('lightskyblue');
+        setHClr('#b0c4de');
       }
     } else {
       setHClr('transparent');
@@ -167,7 +168,7 @@ function App() {
   //   window.addEventListener("scroll", handleScroll);
   // }, []);
 
-  const [text, setText] = useState(0);
+  const [text, setText] = useState('');
 
   function setRandomName() {
     const index = Math.floor(Math.random() * textArr.length);
@@ -336,6 +337,10 @@ function App() {
               </div>            
             </Col>
           </Row>
+
+          <div style={{textAlign: 'center', fontSize: '55px'}}>🕳</div>
+
+          <Games />
         </div>
       </div>
       
