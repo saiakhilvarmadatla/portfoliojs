@@ -19,7 +19,7 @@ export function BlockStart({ position = [ 0, 0, 0 ] })
 }
 
 export function BlockEnd({ position = [0, 0, 0] }){
-    const hamburger = useGLTF('/coins.gltf');
+    const hamburger = useGLTF('/models/coins.gltf');
 
     hamburger.scene.children.forEach((mesh) => {
         mesh.castShadow = true;

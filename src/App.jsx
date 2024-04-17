@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import * as THREE from 'three';
 
@@ -14,6 +14,8 @@ import {
 // import { ScrollPanel } from 'primereact/scrollpanel';
 
 import { Row, Col } from 'react-bootstrap';
+
+import { Menu } from 'primereact/menu';
 
 import { 
   OrbitControls, MeshWobbleMaterial, 
@@ -31,6 +33,7 @@ import "primeicons/primeicons.css";
 import 'bootstrap/dist/css/bootstrap.css'; 
 
 import './App.css';
+import Footer from './footer.jsx';
 // import typewriter from './assets/fonts/Typewriter_Bold.json';
 // import helvetiker from "three/examples/fonts/helvetiker_regular.typeface.json";
 
@@ -48,6 +51,8 @@ import './App.css';
 // };
 
 function App() {
+  const pop = useRef();
+  const [text, setText] = useState('');
   const [theme, setTheme] = useState(true);
   const [hclr, setHClr] = useState('transparent');
 
@@ -68,6 +73,43 @@ function App() {
       setHClr('transparent');
     }
   };
+
+  
+  function setRandomName() {
+    const index = Math.floor(Math.random() * textArr.length);
+
+    let newText = textArr[index];
+
+    if (newText === text) { 
+      setRandomName() 
+    } else { 
+      setText(newText) 
+    }
+
+    return
+  };
+
+  useEffect(() => {
+    document.title = 'Home Page S.A.V.D';
+
+    window.addEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => { setRandomName() }, 5000);
+  }, [text]);
+
+  const items = [
+    {
+      label: 'Update',
+      icon: 'pi pi-refresh',
+    },
+    {
+      label: 'Delete',
+      icon: 'pi pi-times',
+    } 
+  ];
+
 
   // extend({ TextGeometry });
 
@@ -158,36 +200,6 @@ function App() {
   //   return <primitive object={scene} scale={0.005} position={[0.75, 0, 0]} />
   // };
 
-  useEffect(() => {
-    document.title = 'Home Page S.A.V.D';
-
-    window.addEventListener("scroll", handleScroll);
-  }, []);
-
-  // useEffect(() => {
-  //   window.addEventListener("scroll", handleScroll);
-  // }, []);
-
-  const [text, setText] = useState('');
-
-  function setRandomName() {
-    const index = Math.floor(Math.random() * textArr.length);
-
-    let newText = textArr[index];
-
-    if (newText == text) { 
-      setRandomName() 
-    } else { 
-      setText(newText) 
-    }
-
-    return
-  };
-
-  useEffect(() => {
-    setTimeout(() => { setRandomName() }, 5000);
-  }, [text]);
-
   // const items = [
   //   { status: 'Ordered', date: '15/10/2020 10:30', icon: 'pi pi-shopping-cart', color: '#9C27B0' },
   //   { status: 'Processing', date: '15/10/2020 14:00', icon: 'pi pi-cog', color: '#673AB7' },
@@ -244,9 +256,11 @@ function App() {
             </div>
           </div>
 
-          <div style={{position: 'fixed', right: '2.5vw'}} className='btn_user'>
-            <div className="pi pi-user" style={{fontSize: '20px', color: '#fff'}}></div>
+          <div style={{position: 'fixed', right: '2.5vw'}} className='btn_user' onClick={(event) => menu.current.toggle(event)} aria-controls="popup_menu" aria-haspopup>
+            <div className="pi pi-user" style={{fontSize: '20px', color: '#fff'}} />
           </div>
+
+          <Menu model={items} popup ref={pop} id="popup_menu" />
         </div>
       </header>
 
@@ -385,7 +399,9 @@ function App() {
         <OrbitControls />
       </Canvas>
 
-      <WebXR xr={'ar'} theme={theme} />
+      <WebXR theme={theme} />
+
+      <Footer theme={theme} />
     </div>
   );
 };
