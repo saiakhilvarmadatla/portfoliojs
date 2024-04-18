@@ -353,8 +353,6 @@ function App() {
           </Row>
 
           <div style={{textAlign: 'center', fontSize: '55px'}}>🕳</div>
-
-          <Games />
         </div>
       </div>
       
@@ -398,6 +396,8 @@ function App() {
 
         <OrbitControls />
       </Canvas>
+
+      <Games theme={theme} />
 
       <WebXR theme={theme} />
 

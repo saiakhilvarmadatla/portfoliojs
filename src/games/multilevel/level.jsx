@@ -27,7 +27,7 @@ export function BlockEnd({ position = [0, 0, 0] }){
 
     return <group position={ position }>
         <Text
-            font="/bebas-neue-v9-latin-regular.woff"
+            font="/fonts/Playball.ttf"
             scale={1}
             position={[0, 2.25, 2]}
         >

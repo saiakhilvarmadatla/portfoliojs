@@ -64,35 +64,42 @@ const Footer = ({theme}) => {
                     <Earth />
                 </Canvas>
 
-                <div style={{width: '50%', marginTop: '5vh', padding: '8px'}}>
-                    <input 
-                        type='text' placeholder='Enter Name' 
-                        style={{width: '20vw', marginRight: '1.5%'}} 
-                        className='footer_input' value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
+                <div style={{width: '50%', marginTop: '5vh'}} className='container row'>
+                    <div className='col-6'>
+                        <input 
+                            type='text' placeholder='Enter Name' 
+                            style={{width: '100%', marginRight: '1.5%'}} 
+                            className='footer_input' value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                    </div>
 
-                    <input 
-                        type='tel' placeholder='Enter Mobile' value={mobile}
-                        style={{width: '25vw'}} className='footer_input'
-                        onChange={(e) => setMobile(e.target.value)}
-                    />
+                    <div className='col-6'>
+                        <input 
+                            type='tel' placeholder='Enter Mobile' value={mobile}
+                            style={{width: '100%'}} className='footer_input'
+                            onChange={(e) => setMobile(e.target.value)}
+                        />
+                    </div>
 
-                    <input 
-                        type='email' placeholder='Enter Email' 
-                        style={{width: '46vw', marginTop: '2vh'}} 
-                        className='footer_input' value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-
+                    <div className='col-12'>
+                        <input 
+                            type='email' placeholder='Enter Email' 
+                            style={{width: '100%', marginTop: '2vh'}} 
+                            className='footer_input' value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
                     
-                    <textarea
-                        rows="4" cols="50"
-                        placeholder='Enter Details' 
-                        style={{width: '46vw', marginTop: '2vh'}} 
-                        className='footer_textarea' value={details}
-                        onChange={(e) => setDetails(e.target.value)}
-                    />
+                    <div className='col-12'>
+                        <textarea
+                            rows="4" cols="50"
+                            placeholder='Enter Details' 
+                            style={{width: '100%', marginTop: '2vh'}} 
+                            className='footer_textarea' value={details}
+                            onChange={(e) => setDetails(e.target.value)}
+                        />
+                    </div>
 
                     <div style={{marginTop: '1vh', display: 'flex', justifyContent: 'center'}}>
                         <button className='footer_btn'>Submit</button>

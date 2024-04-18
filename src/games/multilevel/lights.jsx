@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 
-export default function Lights(){
+export default function Lights({theme}){
     const light = useRef();
     
     useFrame((state) => {
@@ -11,7 +11,8 @@ export default function Lights(){
     });
 
     return <>
-        <directionalLight
+        <directionalLight 
+            color={theme===true ? '#808080' : '#b0c4de'}
             ref={light} castShadow
             shadow-mapSize={[1024, 1024]}
             position={[4, 4, 1]} intensity={4.5}

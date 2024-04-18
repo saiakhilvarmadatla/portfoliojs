@@ -3,12 +3,12 @@ import React from 'react';
 import { Canvas } from '@react-three/fiber';
 import { KeyboardControls } from '@react-three/drei';
 
-import Experience from './experience'
+import Experience from './experience.jsx'
 // import Interface from './interface.jsx';
 
 import './index.css';
 
-export default function Multilevel(){
+export default function Multilevel({theme}){
     return(
         <div style={{height: '55vh', width: '100%'}}>
             <KeyboardControls map={[
@@ -24,7 +24,7 @@ export default function Multilevel(){
                         fov: 45, near: 0.1, far: 200, position: [2.5, 4, 6]
                     }}
                 >
-                    <Experience />
+                    <Experience theme={theme} />
                 </Canvas>
             </KeyboardControls>
         </div>
