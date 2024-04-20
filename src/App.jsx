@@ -34,6 +34,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import './App.css';
 import Footer from './footer.jsx';
+import Projects from './projects.jsx';
 // import typewriter from './assets/fonts/Typewriter_Bold.json';
 // import helvetiker from "three/examples/fonts/helvetiker_regular.typeface.json";
 
@@ -400,6 +401,10 @@ function App() {
       <Games theme={theme} />
 
       <WebXR theme={theme} />
+
+      <div style={{height: '175vh'}}>
+        <Projects theme={theme} />
+      </div>
 
       <Footer theme={theme} />
     </div>
