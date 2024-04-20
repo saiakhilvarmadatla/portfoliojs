@@ -12,6 +12,8 @@
   "dependencies": {
     "@ar-js-org/ar.js": "^3.4.5",
     "@google/model-viewer": "^3.4.0",
+    "@juggle/resize-observer": "^3.4.0",
+    "@react-three/a11y": "^3.0.0",
     "@react-three/cannon": "^6.6.0",
     "@react-three/drei": "^9.99.7",
     "@react-three/fiber": "^8.15.19",
