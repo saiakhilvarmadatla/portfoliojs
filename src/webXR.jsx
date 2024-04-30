@@ -7,6 +7,8 @@ import { Dialog } from 'primereact/dialog';
 import ARCanvas from './ar-img/arcanvas.jsx';
 import ARMarker from './ar-img/armarker.jsx';
 
+import '@google/model-viewer';
+
 // import 'aframe';
 // import { Entity, Scene } from 'aframe-react';
 
@@ -104,14 +106,28 @@ export const WebXR = ({theme}) => {
                 style={{ width: '100vw', height: '50vh' }} 
                 onHide={() => setOVR(false)} maximizable
             >
-                
-                    {/* <Scene>
-                        <Entity geometry={{primitive: 'torus'}} material={{color: 'red'}} position={{x: 0, y: 0, z: -5}} />
-                        <Entity light={{type: 'point'}} />
-                        <Entity gltf-model={{src: '/models/laptop.gltf'}} />
-                        <Entity text={{value: 'Hello, WebVR!'}} />
-                    </Scene> */}
-                
+                <div style={{margin: '0px', overflow: 'hidden'}}>
+                    <a-scene
+                        vr-mode-ui='enabled: false;' embedded
+                        renderer="logarithmicDepthBuffer: true; precision: medium;"
+                        arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'
+                    >
+
+                        {/* use rawgithack to retrieve the correct url for nft marker (see 'pinball' below) */}
+                        <a-nft
+                            type='nft' url='/img/trex/trex'
+                            smooth='true' smoothCount='10' 
+                            smoothTolerance='0.01' smoothThreshold='5'
+                        >
+                            <a-entity
+                                gltf-model='/model/trex.gltf'
+                                scale="5 5 5"
+                                position="150 300 -100"
+                            ></a-entity>
+                        </a-nft>
+                        <a-entity camera></a-entity>
+                    </a-scene>
+                </div>   
             </Dialog>
         </div>
     );
